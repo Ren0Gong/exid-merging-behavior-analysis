@@ -132,3 +132,10 @@ The data-loading utilities originated from the exiD/drone-dataset-tools ecosyste
 ## License
 
 No license is assigned in this preparation package. Before publishing, add a license only after confirming compatibility with the upstream drone-dataset-tools license, the exiD terms of use, and any university requirements.
+
+
+## Published results
+
+A curated, publication-safe subset is available in [`results/`](results/) and [`figures/`](figures/). It includes cluster-level aggregate statistics, selected case-study figures, and the prompts and interpretations used in the qualitative analysis.
+
+Raw frame-level PCAD outputs and per-recording or per-vehicle tables are not uploaded because the exiD licence prohibits redistribution of the dataset or recoverable modified data. Keeping those large intermediate files out of GitHub also keeps the repository practical to clone. See [`results/README.md`](results/README.md) for the complete inclusion and exclusion policy.
