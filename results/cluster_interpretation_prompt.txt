@@ -1,0 +1,77 @@
+You are a traffic-behavior analyst examining quantitative vehicle-level data from highway on-ramp merging manoeuvres.
+
+The vehicles have already been grouped using K-means clustering. Each row in the supplied dataset represents one merging vehicle, and the cluster column indicates the cluster assigned by K-means.
+
+Your task is not to perform clustering, modify cluster membership, reproduce K-means, or evaluate whether the clustering solution is correct. Your task is to independently infer and explain the behavioral meaning of the existing clusters directly from the supplied vehicle-level metric data.
+
+You are not given any human-assigned behavioral labels or human interpretations. Do not assume a predefined taxonomy of merging behavior. Behavioral descriptions must be derived from the quantitative evidence contained in the supplied dataset.
+
+The interpretation must be structured explicitly around the three behavioral evaluation dimensions: Safety, Efficiency, Comfort.
+
+Evaluation Dimensions and Metric Definitions
+
+The vehicle-level indicators describe three dimensions of highway merging behavior: safety, efficiency, and comfort.
+
+1. Safety
+
+Safety is represented by PCAD-related indicators and the source of the critical interaction.
+    max_pcad: maximum frame-level Potential Collision Avoidance Difficulty (PCAD) observed during the merging manoeuvre.
+    mean_pcad: mean frame-level PCAD over the merging manoeuvre.
+    dominant_critical_position: surrounding-vehicle relation that most frequently produces the highest positive PCAD for the subject vehicle during the manoeuvre.
+
+A larger PCAD value represents greater modeled collision-avoidance difficulty. dominant_critical_position should be interpreted as the critical interaction source within the safety dimension. It indicates which surrounding-vehicle relation is most frequently associated with the highest positive PCAD. Possible critical-position categories may include: Lead, Rear, Left Lead, Left Rear, Left Alongside, Right Lead, Right Rear, Right Alongside, No Critical Interaction. Interpret the critical-position distribution together with PCAD magnitude. For example, a position may occur frequently within a cluster but should not automatically be described as strongly safety-critical if PCAD values in that cluster are generally low.
+
+Do not introduce numerical thresholds for defining a manoeuvre as safe, unsafe, risky, or critical unless such thresholds are explicitly supplied.
+
+2. Efficiency
+
+Efficiency is represented by longitudinal speed indicators.
+
+    average_speed: mean longitudinal velocity of the subject vehicle during the observed merging manoeuvre.
+    max_speed: maximum longitudinal velocity reached by the subject vehicle during the observed manoeuvre.
+
+Interpret speed primarily through relative comparisons between clusters.
+
+Do not classify an absolute speed value as efficient or inefficient without an external reference such as the speed limit, desired speed, or surrounding-traffic speed.
+
+A cluster may nevertheless be described as having relatively higher or lower operational speed when this is clearly supported by the supplied data.
+
+3. Comfort
+
+Comfort is represented by jerk-related indicators.
+
+    max_longitudinal_jerk: maximum absolute longitudinal jerk observed during the manoeuvre.
+    max_lateral_jerk: maximum absolute lateral jerk observed during the manoeuvre.
+    rms_total_jerk: root mean square magnitude of the combined longitudinal and lateral jerk during the manoeuvre.
+
+Larger jerk magnitudes indicate more abrupt changes in vehicle motion and therefore potentially lower motion smoothness.
+
+Do not introduce numerical comfort thresholds unless they are explicitly supplied.
+
+Input data
+
+The attached CSV file contains the cleaned vehicle-level metrics and K-means cluster assignment. Each row corresponds to one merging vehicle.
+
+[Add CSV file here]
+
+Required output format
+
+For each cluster, return:
+
+Cluster [ID]
+Behavioral label:
+        [A concise label expressed primarily in terms of the three behavioral dimensions, for example: "High-safety, high-efficiency, high-comfort merging". Use words such as high/moderate/low.]
+Distinctive quantitative pattern:
+        [Describe the main distributional characteristics that distinguish this cluster from the others.]
+Safety interpretation:
+        [Explicitly translate PCAD characteristics and critical positions into a relative safety interpretation.]
+Efficiency interpretation:
+        [Explicitly translate relative average and maximum speeds into a relative efficiency interpretation.]
+Comfort interpretation:
+        [Explicitly translate jerk levels into a relative comfort and motion-smoothness interpretation.]
+Strongest distinguishing metrics:
+        [Find the most distinguishing metrics for which the cluster substantially differ from other clusters.]
+Overlapping or weakly distinguishing metrics:
+        [Identify metrics for which the cluster substantially overlaps with other clusters.]
+Overall behavioral interpretation:
+        [Integrate the different dimensions into a concise semantic description.]

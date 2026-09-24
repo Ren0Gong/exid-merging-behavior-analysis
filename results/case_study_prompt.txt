@@ -1,0 +1,205 @@
+You are a traffic-behavior analyst examining quantitative time-series data from one highway on-ramp merging manoeuvre.
+
+Each row in the supplied CSV represents one observed frame of the same merging vehicle. The rows are arranged chronologically.
+
+Your task is to independently interpret the temporal development of this individual manoeuvre from the supplied quantitative evidence.
+
+You are not being asked to perform clustering, assign the case to a cluster, guess its cluster membership, or compare it with behavioral labels obtained elsewhere. You are not given any human interpretation, cluster label, case-selection rationale, or interpretation of another case.
+
+Do not assume a predefined taxonomy of merging behavior. Derive the interpretation directly from the time-series evidence in the supplied CSV.
+
+The interpretation must be structured explicitly around three behavioral evaluation dimensions:
+
+Safety
+
+Efficiency
+
+Comfort
+
+Evaluation dimensions and variable definitions
+
+1. Safety
+
+Safety is represented by:
+
+pcad_max_mps: the maximum frame-level Potential Collision Avoidance Difficulty (PCAD) across the observed surrounding vehicles.
+
+critical_position: the surrounding-vehicle relation responsible for the maximum positive PCAD at that frame.
+
+A larger PCAD value represents greater modeled collision-avoidance difficulty.
+
+Possible critical positions may include:
+
+Lead
+
+Rear
+
+Left Lead
+
+Left Rear
+
+Left Alongside
+
+Right Lead
+
+Right Rear
+
+Right Alongside
+
+No Risk or No Critical Interaction
+
+Interpret critical_position together with PCAD magnitude. A surrounding position occurring frequently should not automatically be described as safety-critical when the associated PCAD values are low.
+
+Examine:
+
+When PCAD begins to rise
+
+The timing and magnitude of important PCAD peaks
+
+Whether elevated PCAD is brief, repeated, or sustained
+
+Which surrounding-vehicle positions generate these peaks
+
+Whether the critical interaction source changes over time
+
+Whether PCAD subsequently decreases or remains elevated
+
+Do not introduce numerical thresholds for classifying the manoeuvre as safe, unsafe, risky, or critical unless such thresholds are explicitly supplied.
+
+Do not claim that a collision was imminent or that a driver performed a specific evasive action solely because PCAD increased.
+
+2. Efficiency
+
+Efficiency is represented by:
+
+lon_velocity_mps: longitudinal velocity of the subject vehicle.
+
+Examine:
+
+The overall speed evolution
+
+Acceleration or deceleration phases visible in the velocity profile
+
+Whether speed is stable or strongly variable
+
+Whether speed changes coincide with PCAD escalation or recovery
+
+Whether maintaining or changing speed appears to support the progression of the manoeuvre
+
+No speed limit, desired speed, surrounding-traffic speed, or external efficiency benchmark is supplied.
+
+Therefore, do not classify an absolute speed as efficient or inefficient. Describe only the observed temporal pattern, such as stable speed, increasing speed, decreasing speed, speed recovery, or substantial speed variation.
+
+3. Comfort
+
+Comfort and motion smoothness are represented by:
+
+lon_jerk_mps3: longitudinal jerk
+
+lat_jerk_mps3: lateral jerk
+
+Larger absolute jerk values indicate more abrupt changes in vehicle motion and potentially lower motion smoothness.
+
+Interpret jerk using its absolute magnitude when discussing comfort. The sign may be used to describe changes over time, but do not infer a physical left/right direction from the sign of lateral jerk unless the coordinate convention is supplied.
+
+Examine:
+
+Isolated jerk spikes
+
+Repeated or oscillating jerk
+
+Sustained periods of elevated jerk
+
+Whether longitudinal or lateral jerk is more prominent
+
+Whether jerk events coincide with PCAD peaks or speed changes
+
+Whether the manoeuvre becomes smoother after a disturbance
+
+The first jerk value may be blank because jerk requires a preceding frame. Treat this as an expected missing value, not as zero and not as a data-quality failure.
+
+Do not introduce numerical comfort thresholds unless they are explicitly supplied.
+
+Temporal interpretation requirements
+
+Use time_s as the principal time reference and frame only as a secondary identifier.
+
+Identify data-supported temporal phases where appropriate, for example:
+
+Initial condition
+
+Interaction development
+
+Peak interaction
+
+Adjustment or response
+
+Recovery or stabilization
+
+These phase names are analytical descriptions, not predefined driving states. Do not force the case into these phases if the data do not support them.
+
+Do not claim that a particular timestamp is the lane-change start, lane-crossing moment, or merge completion because lane-change annotations and road geometry are not supplied.
+
+Focus on meaningful temporal patterns rather than describing every row individually.
+
+Support important statements with approximate times, time intervals, and observed values from the CSV. Do not invent values. Clearly distinguish direct observations from behavioral inferences.
+
+Input data
+
+The attached CSV contains one case only, with the following columns:
+
+case_id
+
+recording_id
+
+track_id
+
+frame
+
+time_s
+
+pcad_max_mps
+
+critical_position
+
+lon_velocity_mps
+
+lon_jerk_mps3
+
+lat_jerk_mps3
+
+[Attach one case CSV here]
+
+Required output format
+
+Case [case_id]
+
+Case identity:
+Recording [recording_id], track [track_id].
+
+Concise behavioral characterization:
+Provide a short, evidence-based description integrating safety, efficiency, and comfort. Avoid assigning a cluster label or using unsupported absolute categories.
+
+Main temporal phases:
+Identify the principal phases of the manoeuvre. For each phase, provide its approximate time interval and describe the associated PCAD, critical position, velocity, and jerk behavior.
+
+Safety interpretation:
+Explain how PCAD develops over time, identify the most important peaks or sustained elevations, and state which surrounding-vehicle positions generate them. Distinguish between brief and sustained interaction difficulty.
+
+Efficiency interpretation:
+Explain the longitudinal velocity evolution. Describe important acceleration, deceleration, stability, or recovery patterns and how they relate temporally to the safety interaction.
+
+Comfort interpretation:
+Explain the longitudinal and lateral jerk patterns. Identify the most important abrupt or oscillatory periods and discuss whether they coincide with PCAD or velocity changes.
+
+Cross-dimensional relationships:
+Describe the clearest temporal relationships among safety, efficiency, and comfort. For example, determine whether increased interaction difficulty coincides with speed adjustment, abrupt control input, both, or neither. Describe association only; do not claim causality.
+
+Strongest quantitative evidence:
+List the most informative observations supporting the interpretation. Include approximate timestamps or intervals and values where possible.
+
+Uncertain or weakly supported inferences:
+Identify conclusions that cannot be established from the supplied variables, such as driver intention, lane-change timing, surrounding-traffic speed, compliance with the speed limit, or cluster membership.
+
+Overall case interpretation:
+Integrate the temporal evidence into a concise description of how the manoeuvre developed across safety, efficiency, and comfort. Clearly separate what is directly observed from what is cautiously inferred.

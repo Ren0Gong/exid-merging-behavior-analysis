@@ -1,0 +1,3 @@
+cluster,n_vehicles,duration_s_mean,duration_s_sd,max_pcad_mean,max_pcad_sd,mean_pcad_mean,mean_pcad_sd,average_speed_mean,average_speed_sd,max_speed_mean,max_speed_sd,max_longitudinal_jerk_mean,max_longitudinal_jerk_sd,max_lateral_jerk_mean,max_lateral_jerk_sd,rms_total_jerk_mean,rms_total_jerk_sd,dominant_critical_position_mode
+0,1808,17.951372,2.142121,2.606001,1.858835,0.430429,0.30331,23.718382,2.713033,29.821255,3.673522,0.369709,0.145409,0.466299,0.196594,0.267604,0.068586,lead
+1,3474,19.959816,3.018886,1.884026,1.398057,0.39877,0.283965,21.316996,2.612276,25.680352,3.023279,0.239205,0.077379,0.235037,0.115095,0.153648,0.04789,lead

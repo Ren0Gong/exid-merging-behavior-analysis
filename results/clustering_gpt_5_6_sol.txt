@@ -1,0 +1,232 @@
+I interpreted the five existing K-means clusters directly from the 5,282 vehicle-level observations. The terms high/moderate/low below are strictly relative to the other clusters in this dataset. They are not based on external safety, efficiency, or comfort thresholds.
+
+Cluster 0
+
+Behavioral label:
+Moderate-safety, high-efficiency, high-comfort merging
+
+Distinctive quantitative pattern:
+Cluster 0 contains 589 vehicles and is characterized by the highest average speed together with the lowest jerk levels of all clusters. Mean average speed is 26.323 and mean maximum speed is 29.916. At the same time, mean maximum longitudinal jerk, maximum lateral jerk, and RMS total jerk are only 0.212, 0.091, and 0.106, respectively.
+
+Safety indicators are more intermediate: mean max PCAD is 2.391 and mean PCAD is 0.414. Max PCAD is also quite broadly distributed, with an IQR of approximately 0.960–4.451, meaning safety behavior within this cluster is considerably less homogeneous than its speed and comfort characteristics.
+
+Safety interpretation:
+The PCAD values place Cluster 0 around the middle of the five clusters rather than at either safety extreme. Its mean PCAD is lower than Clusters 1 and 4 but higher than Clusters 2 and 3.
+
+The most frequent critical interaction source is Left Rear (36.7%), followed by Lead (25.6%). Left Lead, Rear, and Right Lead each contribute roughly 9–10%. About 7.3% of vehicles have No Critical Interaction, the highest proportion among the clusters.
+
+Thus, Cluster 0 is not distinguished primarily by unusually low collision-avoidance difficulty. Its relative safety is better described as moderate, with substantial variation between vehicles.
+
+Efficiency interpretation:
+This is the clearest high-efficiency-speed cluster. It has the highest average speed of all five clusters, and its maximum speed is second only to Cluster 3.
+
+The average-speed IQR of 24.456–27.478 is also clearly shifted upward relative to the lower-speed clusters. Therefore, in relative operational terms, vehicles in this group preserve comparatively high longitudinal speed through the merging manoeuvre.
+
+Comfort interpretation:
+Cluster 0 provides the strongest evidence of smooth vehicle motion. It has the lowest mean values for all three jerk indicators.
+
+Particularly distinctive is lateral jerk: mean maximum lateral jerk is only 0.091, compared with 0.220–0.639 in the other clusters. RMS total jerk is similarly low at 0.106.
+
+This indicates highly smooth longitudinal and lateral control relative to the rest of the sample.
+
+Strongest distinguishing features:
+
+Average speed: highest among all clusters.
+Maximum lateral jerk: lowest by a substantial margin.
+RMS total jerk: lowest among all clusters.
+Longitudinal jerk: lowest, although very similar to Cluster 4.
+Critical interaction: Left Rear is the most common source, but the interaction-source distribution is relatively diverse.
+
+Overlapping or weakly distinguishing features:
+PCAD is the main weak separator. Mean max PCAD is almost identical to Cluster 4 (2.391 vs. 2.356) and the broad max-PCAD distribution overlaps considerably with several other clusters. Maximum speed also overlaps with Cluster 3 despite Cluster 0 having the higher average speed.
+
+Overall behavioral interpretation:
+Cluster 0 represents vehicles that merge while maintaining relatively high longitudinal speed with exceptionally smooth vehicle motion, without showing an equivalently strong safety advantage. The defining behavior is therefore a combination of high operational speed and high motion smoothness, with intermediate PCAD characteristics.
+
+Cluster 1
+
+Behavioral label:
+Low-safety, moderate-efficiency, low-comfort merging
+
+Distinctive quantitative pattern:
+Cluster 1 contains 887 vehicles and has by far the highest PCAD values. Mean max PCAD is 4.261, while mean PCAD is 0.668, both the highest among the five clusters.
+
+Its max-PCAD distribution is also consistently elevated: the median is 4.581 and the IQR is 3.893–5.036.
+
+Speeds are intermediate, with mean average speed 22.380 and maximum speed 28.732. Jerk is relatively elevated: longitudinal 0.342, lateral 0.393, and RMS total jerk 0.236.
+
+Safety interpretation:
+This cluster exhibits the greatest modeled collision-avoidance difficulty within the dataset. Both peak PCAD and sustained/average PCAD distinguish it from the other clusters.
+
+The dominant critical position is particularly concentrated: Lead accounts for 50.1% of vehicles, followed by Left Rear at 28.0%. Rear and Right Lead each account for approximately 8.9%.
+
+The concentration of high PCAD together with frequent Lead interactions indicates that this cluster is characterized by comparatively strong safety interaction with vehicles ahead. Importantly, the lower-safety interpretation follows from the relative PCAD magnitude, not simply from the frequency of Lead interactions.
+
+Efficiency interpretation:
+The speed characteristics are approximately intermediate. Average speed is higher than Clusters 2 and 4 but clearly lower than Clusters 0 and 3.
+
+Maximum speed follows a similar pattern. Therefore, Cluster 1 shows moderate relative operational speed, rather than being defined by especially fast or especially slow merging.
+
+Comfort interpretation:
+All three jerk measures are relatively high. Cluster 1 has the second-highest longitudinal jerk, lateral jerk, and RMS total jerk, behind Cluster 3.
+
+The motion is therefore less smooth than Clusters 0, 2, and 4, although not as abrupt as Cluster 3.
+
+Strongest distinguishing features:
+
+Max PCAD: highest by a large margin.
+Mean PCAD: highest among all clusters.
+Lead critical position: unusually dominant at 50.1%.
+Jerk: consistently elevated across all three comfort indicators.
+
+Overlapping or weakly distinguishing features:
+Speed is relatively weak in distinguishing this cluster. Its average-speed IQR (21.172–23.523) overlaps substantially with Cluster 2, while maximum-speed distributions overlap with Clusters 0, 2, and 3. Its jerk values also overlap partly with Cluster 2 despite having higher means.
+
+Overall behavioral interpretation:
+Cluster 1 represents merges with comparatively high collision-avoidance difficulty, often associated with interaction with a leading vehicle, while operating at intermediate speeds and displaying relatively abrupt motion. Its most important characteristic is therefore its safety-interaction burden rather than its speed profile.
+
+Cluster 2
+
+Behavioral label:
+High-safety, moderate-to-low-efficiency, moderate-comfort merging
+
+Distinctive quantitative pattern:
+Cluster 2 is the largest group, containing 1,941 vehicles. Its principal characteristic is its low PCAD: mean max PCAD is only 1.030, and mean PCAD is 0.221, both the lowest among all clusters.
+
+The max-PCAD IQR is only 0.485–1.494, demonstrating that the relatively low PCAD is not merely caused by a few observations.
+
+Mean average and maximum speeds are 21.639 and 27.086, respectively. Comfort indicators sit near the middle of the sample: longitudinal jerk 0.289, lateral jerk 0.325, RMS jerk 0.200.
+
+Safety interpretation:
+This cluster has the strongest relative safety profile according to PCAD. Both peak collision-avoidance difficulty and average difficulty are substantially below those of most other clusters.
+
+Critical interaction sources are relatively distributed. Lead is most common at 36.8%, followed by Rear at 28.5% and Left Rear at 23.1%.
+
+Thus, the high relative safety interpretation comes from the low PCAD magnitude, rather than an absence of interactions. Vehicles still interact with different surrounding vehicles, but those interactions generally correspond to lower modeled avoidance difficulty.
+
+Efficiency interpretation:
+Average speed is the second-lowest after Cluster 4, although it is relatively close to Cluster 1. Maximum speed is likewise below Clusters 0, 1, and 3 but considerably above Cluster 4.
+
+Consequently, this cluster can be regarded as having moderate-to-low relative operational speed rather than unequivocally low efficiency.
+
+Comfort interpretation:
+Comfort characteristics are intermediate. All three jerk indicators lie between the smooth Clusters 0/4 and the more abrupt Clusters 1/3.
+
+There is therefore no strong evidence that smoothness itself defines this group. Its comfort profile is best described as moderate.
+
+Strongest distinguishing features:
+
+Max PCAD: lowest among all clusters.
+Mean PCAD: lowest among all clusters.
+PCAD distribution: consistently shifted toward smaller values.
+Critical-position distribution: more distributed between Lead, Rear, and Left Rear than Cluster 1.
+
+Overlapping or weakly distinguishing features:
+Jerk indicators are only weakly distinctive and overlap considerably with neighboring clusters. Average speed overlaps strongly with Cluster 1. Maximum speed is also close to the overall sample center.
+
+Overall behavioral interpretation:
+Cluster 2 is predominantly a low-PCAD merging pattern. Vehicles experience comparatively little modeled collision-avoidance difficulty, but this does not coincide with either particularly high speeds or particularly smooth motion. Its behavioral identity is therefore driven primarily by the safety dimension.
+
+Cluster 3
+
+Behavioral label:
+High-safety, high-efficiency, low-comfort merging
+
+Distinctive quantitative pattern:
+Cluster 3 contains 518 vehicles and is characterized by the unusual combination of relatively low PCAD, high speed, and very high jerk.
+
+Mean max PCAD and mean PCAD are 1.734 and 0.308, respectively, second only to Cluster 2 in terms of low PCAD.
+
+Mean average speed is 25.102, while mean maximum speed reaches 31.036, the highest maximum speed among all clusters.
+
+In contrast, longitudinal jerk (0.424), lateral jerk (0.639), and RMS total jerk (0.333) are all the highest of the five groups.
+
+Safety interpretation:
+PCAD indicates comparatively favorable relative safety. Both mean and maximum PCAD are clearly below Clusters 0, 1, and 4, although not as low as Cluster 2.
+
+Critical interactions are predominantly Left Rear (34.7%) and Lead (33.8%), with Left Lead contributing another 10.6%.
+
+Thus, Cluster 3 does not represent an absence of interaction. Instead, despite frequent surrounding-vehicle interactions, modeled avoidance difficulty remains relatively low.
+
+Efficiency interpretation:
+Operational speed is high. Cluster 3 has the highest maximum speed and the second-highest average speed.
+
+The average-speed IQR of 23.611–26.434 and maximum-speed IQR of 28.560–32.965 confirm that the speed distribution is shifted upward relative to most other clusters.
+
+Comfort interpretation:
+Comfort is the defining negative characteristic of Cluster 3. It records the highest value for every jerk-based indicator.
+
+Maximum lateral jerk is especially distinctive at 0.639, compared with 0.393 or less in every other cluster. RMS total jerk is similarly elevated at 0.333.
+
+This implies substantially more abrupt acceleration changes and lower relative motion smoothness.
+
+Strongest distinguishing features:
+
+Maximum lateral jerk: highest by a substantial margin.
+RMS total jerk: highest by a substantial margin.
+Maximum longitudinal jerk: highest.
+Maximum speed: highest.
+PCAD: comparatively low despite the high-speed and high-jerk profile.
+
+Overlapping or weakly distinguishing features:
+Average speed overlaps to some degree with Cluster 0, while PCAD distributions overlap with Cluster 2 and the lower-PCAD portion of Cluster 0. Critical-position categories are also fairly similar to Cluster 0, particularly the importance of Left Rear.
+
+Overall behavioral interpretation:
+Cluster 3 represents fast but dynamically abrupt merging. Vehicles maintain high operational speeds and exhibit relatively low modeled collision-avoidance difficulty, but accomplish the manoeuvre through considerably less smooth longitudinal and lateral motion. The principal trade-off is therefore high safety/high speed versus low comfort.
+
+Cluster 4
+
+Behavioral label:
+Moderate-to-low-safety, low-efficiency, high-comfort merging
+
+Distinctive quantitative pattern:
+Cluster 4 contains 1,347 vehicles and has the lowest speed profile of all clusters while retaining relatively low jerk.
+
+Mean average speed is 19.732, and maximum speed is 23.291, both the lowest of the five groups. Their IQRs are 18.658–21.155 and 22.075–24.697, respectively.
+
+Mean maximum PCAD is 2.356, while mean PCAD reaches 0.549, the second-highest after Cluster 1. Jerk remains low: longitudinal 0.216, lateral 0.220, RMS total 0.138.
+
+Safety interpretation:
+Safety characteristics are somewhat mixed. Peak PCAD is almost identical to Cluster 0, but mean PCAD is noticeably higher and is second only to Cluster 1.
+
+This suggests that Cluster 4 is not distinguished by exceptionally large peak avoidance difficulty, but PCAD tends to remain more elevated through the manoeuvre than in Clusters 0, 2, or 3.
+
+Critical-position sources are distributed primarily among Left Rear (35.9%), Rear (29.5%), and Lead (29.3%). Unlike Cluster 1, no single relation overwhelmingly dominates.
+
+Accordingly, the group is best described as having moderate-to-low relative safety, rather than strongly safety-critical behavior.
+
+Efficiency interpretation:
+This is the clearest low-speed cluster. Both average and maximum speeds are substantially below those of every other group.
+
+Therefore, relative to the supplied population, Cluster 4 has the lowest operational-speed efficiency profile. This does not imply that its absolute speed is inappropriate, because no speed limit or traffic-speed reference has been supplied.
+
+Comfort interpretation:
+Despite its low speeds, motion is comparatively smooth. Cluster 4 has the second-lowest values for all three jerk metrics, surpassed only by Cluster 0.
+
+Longitudinal jerk is especially close to Cluster 0 (0.216 vs. 0.212), while lateral and RMS jerk remain clearly below Clusters 1–3.
+
+Strongest distinguishing features:
+
+Average speed: lowest among all clusters.
+Maximum speed: lowest by a substantial margin.
+RMS total jerk: second-lowest.
+Longitudinal and lateral jerk: relatively low.
+Mean PCAD: relatively elevated despite the low-speed profile.
+
+Overlapping or weakly distinguishing features:
+Maximum PCAD strongly overlaps with Cluster 0, whose mean is nearly identical. Longitudinal jerk is also almost indistinguishable from Cluster 0. The Left Rear/Rear/Lead critical-interaction pattern overlaps substantially with several other clusters.
+
+Overall behavioral interpretation:
+Cluster 4 represents slow and smooth merging accompanied by moderately elevated sustained collision-avoidance difficulty. Its behavioral identity is primarily the combination of low longitudinal operating speed and high motion smoothness, rather than exceptionally favorable safety conditions.
+
+Cross-cluster interpretation
+
+Taken together, the clusters reveal several distinct behavioral trade-offs rather than a single continuum from “good” to “bad” merging:
+
+Cluster 0: moderate safety + highest average speed + smoothest motion
+Cluster 1: highest PCAD + moderate speed + relatively abrupt motion
+Cluster 2: lowest PCAD + moderate-to-low speed + intermediate smoothness
+Cluster 3: relatively low PCAD + high speed + most abrupt motion
+Cluster 4: moderately elevated PCAD + lowest speed + very smooth motion
+
+Clusters 0 and 3 both operate at relatively high speeds, but their comfort characteristics are almost opposite; similarly, Clusters 0 and 4 are both very smooth, but their speed characteristics are strongly different.

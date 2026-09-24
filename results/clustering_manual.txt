@@ -1,0 +1,39 @@
+Cluster 0: 
+Label:
+moderate safety + high efficiency + high comfort
+Strongest distinguishing features:
+high variance in safety, highest efficiency and comfort
+Critical position source:
+dominant risk from left rear, followed by lead
+
+Cluster 1: 
+Label:
+low safety + moderate efficiency + moderate comfort
+Strongest distinguishing features:
+highest safety risk, critical interaction always involved
+Critical position source:
+dominant risk from lead, followed by left rear
+
+Cluster 2: 
+Label:
+high safety + moderate efficiency + moderate comfort
+Strongest distinguishing features:
+highest safety
+Critical position source:
+major risk from lead, followed by rear and left rear
+
+Cluster 3: 
+Label:
+high safety + high efficiency + low comfort
+Strongest distinguishing features:
+particularly high lateral jerk, lowest comfort
+Critical position source:
+similar level of risk from left rear and lead
+
+Cluster 4: 
+Label:
+moderate safety + low efficiency + high comfort
+Strongest distinguishing features:
+lowest efficiency
+Critical position source:
+similar level of risk from rear, left rear and lead
