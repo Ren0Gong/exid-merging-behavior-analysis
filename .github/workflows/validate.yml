@@ -1,0 +1,55 @@
+name: Validate analysis code
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Compile Python modules
+        run: python -m compileall -q workflow
+
+      - name: Validate notebook JSON
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import nbformat
+
+          notebooks = sorted(Path("workflow").glob("*.ipynb"))
+          if not notebooks:
+              raise SystemExit("No workflow notebooks found")
+          for path in notebooks:
+              nbformat.read(path, as_version=4)
+              print(f"validated {path}")
+          PY
+
+      - name: Run PCAD smoke test
+        run: |
+          python - <<'PY'
+          import math
+          from workflow.pcad_python import pcad_function
+
+          value = pcad_function(
+              0.0, 20.0, 0.0, 0.0,
+              25.0, 20.0, 0.0, 0.0,
+              0.0, 0.0, 0.0, 0.0,
+          )
+          assert math.isfinite(value)
+          assert value >= 0.0
+          print(f"PCAD smoke-test value: {value}")
+          PY
