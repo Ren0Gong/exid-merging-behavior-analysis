@@ -28,11 +28,8 @@ raw temporal PCAD                 vehicle summaries
                                   /          \
                                  v            v
                          cluster figures   clustered table
-                                              |
-                                              v
-                                 06 Post-hoc regression
 
-07 LLM temporal interpretation is an optional, separate branch that requires
+06 LLM temporal interpretation is an optional, separate branch that requires
 a purpose-built long-format temporal-metric CSV.
 ```
 
@@ -45,8 +42,7 @@ a purpose-built long-format temporal-metric CSV.
 | 3 | `03_combine_recording_summaries.ipynb` | `results/summary/exid_metrics_summary_recording_NN.csv` | `results/summary/exid_metrics_summary_all_recordings.csv` |
 | 4 | `04_clean_data.ipynb` | combined summary and original trajectories | cleaned summary, diagnostics, and excluded-vehicle table under `results/summary/` |
 | 5 | `05_cluster_merging_behaviors.ipynb` | `exid_metrics_summary_all_recordings_cleaned.csv` | clustered CSV under `results/summary/`; plots under `figures/` |
-| 6 | `06_posthoc_logistic_regression.ipynb` | clustered CSV | coefficients, predictions, model, and confusion matrices under `results/logistic_regression/` |
-| 7 | `07_llm_temporal_interpretation.ipynb` | `results/temporal_metrics_all_vehicles.csv` | `results/llm_interpretations_pilot.jsonl` |
+| 6 | `06_llm_temporal_interpretation.ipynb` | `results/temporal_metrics_all_vehicles.csv` | `results/llm_interpretations_pilot.jsonl` |
 
 Step 3 is an alternative aggregation path, not an additional transformation. Skip it after a successful full-batch Step 2 run.
 
@@ -132,20 +128,7 @@ The release notebook keeps the final K-means workflow and removes exploratory du
 
 If a fixed cluster count is required for exact thesis reproduction, set `manual_k` explicitly and document the value. Do not attach behavioral meaning to cluster numbers until the profile tables and distributions have been examined.
 
-## Step 6 — Post-hoc regression
-
-The regression uses the cluster assignment as its target and the analysis features as predictors. Its purpose is descriptive: coefficient signs and magnitudes help explain how features separate the discovered clusters. It is not evidence that the predictors cause a driving style.
-
-Reported artifacts include:
-
-- full-sample and cross-validated confusion matrices;
-- wide and long coefficient tables;
-- per-cluster coefficient plots;
-- the fitted pipeline and labeled predictions.
-
-Avoid reporting full-sample accuracy as generalization performance. Prefer the stratified cross-validation result and state the number of folds actually used.
-
-## Step 7 — Optional LLM interpretation
+## Step 6 — Optional LLM interpretation
 
 This experiment does not consume the vehicle-level clustering table. It needs a long-format table with one row per time point and columns corresponding to:
 
