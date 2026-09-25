@@ -6,7 +6,7 @@ A reproducible notebook workflow for identifying on-ramp merging vehicles in the
 - **Efficiency:** longitudinal speed during the merging maneuver.
 - **Comfort:** longitudinal and lateral jerk.
 
-The workflow also supports unsupervised behavior clustering, post-hoc multinomial logistic regression, and an optional experiment for LLM-based interpretation of time-series metrics.
+The workflow also supports unsupervised behavior clustering and an optional experiment for LLM-based interpretation of time-series metrics.
 
 > This repository contains analysis code only. The exiD dataset is not redistributed and must be obtained separately under its own terms of use.
 
@@ -24,8 +24,7 @@ The workflow also supports unsupervised behavior clustering, post-hoc multinomia
 │   ├── 03_combine_recording_summaries.ipynb
 │   ├── 04_clean_data.ipynb
 │   ├── 05_cluster_merging_behaviors.ipynb
-│   ├── 06_posthoc_logistic_regression.ipynb
-│   ├── 07_llm_temporal_interpretation.ipynb
+│   ├── 06_llm_temporal_interpretation.ipynb
 │   ├── pcad_python.py
 │   └── tracks_import.py
 ├── WORKFLOW.md
@@ -84,8 +83,7 @@ Run the notebooks in numerical order, with one exception: notebook 03 is only ne
 3. `03_combine_recording_summaries.ipynb` is an optional recovery/parallel-processing utility that combines separately generated recording summaries.
 4. `04_clean_data.ipynb` detects persistent heading inconsistencies and likely right-censored short trajectories.
 5. `05_cluster_merging_behaviors.ipynb` standardizes selected features, evaluates candidate cluster counts, fits K-means, and creates behavior-profile figures.
-6. `06_posthoc_logistic_regression.ipynb` fits a balanced multinomial logistic-regression model to explain cluster separation.
-7. `07_llm_temporal_interpretation.ipynb` is optional and requires a separately prepared long-format temporal-metric table plus an OpenAI API key.
+6. `06_llm_temporal_interpretation.ipynb` is optional and requires a separately prepared long-format temporal-metric table plus an OpenAI API key.
 
 See [WORKFLOW.md](WORKFLOW.md) for exact inputs, outputs, configuration points, and validation checks.
 
@@ -104,7 +102,7 @@ PCAD is computationally expensive because it performs nested coarse, intermediat
 
 ## Optional LLM experiment
 
-Notebook 07 is intentionally separate from the main clustering pipeline. Before running it, provide:
+Notebook 06 is intentionally separate from the main clustering pipeline. Before running it, provide:
 
 ```powershell
 $env:OPENAI_API_KEY="your-key"
@@ -115,7 +113,7 @@ The notebook expects `results/temporal_metrics_all_vehicles.csv` with vehicle id
 
 ## Reproducibility notes
 
-- K-means and logistic regression use a fixed random seed (`42`).
+- K-means uses a fixed random seed (`42`).
 - Frame rate is read from recording metadata, with `25 Hz` used as a fallback.
 - The lanelet mapping is specific to exiD recordings `00`–`92`.
 - Cluster identifiers are arbitrary labels and should be interpreted from their feature profiles, not their numeric order.
@@ -132,7 +130,6 @@ The data-loading utilities originated from the exiD/drone-dataset-tools ecosyste
 ## License
 
 No license is assigned in this preparation package. Before publishing, add a license only after confirming compatibility with the upstream drone-dataset-tools license, the exiD terms of use, and any university requirements.
-
 
 ## Published results
 
